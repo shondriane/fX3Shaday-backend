@@ -1,0 +1,24 @@
+{
+  "name": "fx3shaday-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shondriane/fX3Shaday-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shondriane/fX3Shaday-backend/issues"
+  },
+  "homepage": "https://github.com/shondriane/fX3Shaday-backend#readme",
+  "dependencies": {
+    "pg": "^8.8.0",
+    "sequelize": "^6.26.0"
+  }
+}
