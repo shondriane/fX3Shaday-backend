@@ -1,6 +1,5 @@
 
-const User = require('../models/user')
-
+const {User} = require('../models')
 const GetAllUsers = async(req,res)=>{
   try{
     const users= await User.findAll()
