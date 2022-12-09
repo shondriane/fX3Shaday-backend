@@ -4,8 +4,7 @@ const middleware = require('../middleware');
 
 
 Router.get('/', controller.GetAllClasses);
-Router.get('/class/:class_id', controller.GetClassById);
-Router.get('/user/:user_id', controller.GetClassByUserId);
+Router.get('/:class_id', controller.GetClassById);
 Router.post(
 	'/',
 	middleware.stripToken,

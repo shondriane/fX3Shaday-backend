@@ -4,7 +4,7 @@ const db = require ('../models/index.js')
 
 const GetAllUserClassesWithPk = async (req, res) => {
 	try {
-		const userClasses = await db.sequelize.query('SELECT * FROM user_class',{
+		const userClasses = await db.sequelize.query('SELECT * FROM user_classes',{
 			type:db.sequelize.QueryTypes.SELECT
 		})
 		
@@ -16,7 +16,7 @@ const GetAllUserClassesWithPk = async (req, res) => {
 
 const GetAllUserClasses= async (req,res)=>{
 	try{
-		const userClasses = await UserClasses.findAll();
+		const userClasses = await UserClass.findAll();
 		res.send(userClasses)
 	}
 	catch (error){
@@ -29,9 +29,9 @@ const GetAllUsersAndClasses = async (req, res) => {
 		const userClasses = await User.findAll({
 			include: [
 				{
-					model: Classes,
+					model: Class,
 					as: 'class_list',
-					through: { attributes: [] }
+					through: { attributes: ["id"] }
 				}
 			]
 		});
@@ -50,9 +50,9 @@ const GetAllUsersAndClassesByUserId = async (req, res) => {
 			where: { id: userId },
 			include: [
 				{
-					model: User,
+					model:Class,
 					as: 'class_list',
-					through: { attributes: [] }
+					through: { attributes: ["id"] }
 				}
 			]
 		});
@@ -71,7 +71,7 @@ const GetAllUsersAndClassesByClassId = async (req, res) => {
 				{
 					model: User,
 					as: 'user_list',
-					through: { attributes: [] }
+					through: { attributes: ["id"] }
 				}
 			]
 		});

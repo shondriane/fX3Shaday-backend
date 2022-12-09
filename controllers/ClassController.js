@@ -20,18 +20,6 @@ const GetClassById = async (req, res) => {
 };
 
 
-
-
-const GetClassByUserId = async (req, res) => {
-	try {
-		const userId = parseInt(req.params.user_id);
-		const getClass = await Class.findAll({ where: { userId: userId } });
-		res.send(getClass);
-	} catch (error) {
-		throw error;
-	}
-};
-
 const CreateClass = async (req, res) => {
 	try {
 		const createClass = await Class.create(req.body);
@@ -67,7 +55,6 @@ const DeleteClassById = async (req, res) => {
 module.exports = {
 	GetAllClasses,
 	GetClassById,
-	GetClassByUserId,
 	CreateClass,
 	UpdateClassById,
 	DeleteClassById
