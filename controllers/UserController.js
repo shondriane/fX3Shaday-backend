@@ -1,8 +1,14 @@
 
-const {User} = require('../models')
+const {User,Review} = require('../models')
 const GetAllUsers = async(req,res)=>{
   try{
-    const users= await User.findAll()
+    const users= await User.findAll({
+      include:[{
+				model:Review,
+				as:"reviews"
+				
+			}]
+    })
     res.send(users)
     console.log(users)
   }catch(error){

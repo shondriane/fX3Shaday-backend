@@ -1,8 +1,17 @@
-const { Class } = require('../models');
+const { Class,Review,User } = require('../models');
 
 const GetAllClasses = async (req, res) => {
 	try {
-		const classes = await Class.findAll();
+		const classes = await Class.findAll({
+			include:[{
+				model:Review,
+				
+				include:[{
+					model:User,
+					
+				}]
+			}]
+		});
 		res.send(classes);
 	} catch (error) {
 		throw error;
@@ -12,7 +21,16 @@ const GetAllClasses = async (req, res) => {
 const GetClassById = async (req, res) => {
 	try {
 		const classId = parseInt(req.params.class_id);
-		const getClass = await Class.findByPk(classId);
+		const getClass = await Class.findByPk(classId,{
+			include:[{
+				model:Review,
+				
+				include:[{
+					model:User,
+					
+				}]
+			}]
+		});
 		res.send(getClass);
 	} catch (error) {
 		throw error;

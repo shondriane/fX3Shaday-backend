@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:'classId'
        });
        Class.hasMany(models.Review, {
-        foreignKey: 'userId'
+        foreignKey: 'classId'
       });
     }
   }

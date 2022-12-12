@@ -1,8 +1,16 @@
-const { Review } = require('../models');
+
+
+const { Review,User } = require('../models');
 
 const GetAllReviews = async (req, res) => {
 	try {
-		const reviews = await Review.findAll();
+		const reviews = await Review.findAll({
+			include:[{
+				model:User,
+				
+				
+			}]
+		});
 		res.send(reviews);
 	} catch (error) {
 		throw error;
