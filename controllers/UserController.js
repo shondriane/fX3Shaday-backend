@@ -1,5 +1,7 @@
 
 const {User,Review} = require('../models')
+// const multer = require('multer')
+
 const GetAllUsers = async(req,res)=>{
   try{
     const users= await User.findAll({
@@ -37,7 +39,7 @@ const GetUserById = async (req, res) => {
 
 const CreateUser = async (req, res) => {
   try {
-    const user = await User.create(req.body)
+    const user = await User.create(req.body,req.file)
     res.send(user)
   } catch (error) {
     throw error
@@ -67,10 +69,37 @@ const DeleteUserById = async (req, res) => {
   }
 }
 
+// const storage = multer.diskStorage({
+//   destination:(req,file,cb)=>{
+// cb(null,'Images')
+//   },
+//   filename: (req,file,cb)=>{
+//     cb(null,Date.now() + path.extreme(file.originalname))
+//   }
+// })
+// const Upload = multer({
+//   storage:storage,
+//   limits:{
+//     fileSize: '1000000'
+//   },
+//   fileFilter:(req,file,cb)=>{
+//     const fileTypes = /jpeg|jpg|png|gif/
+//     const mimeType= fileTypes.test(file.mimetype)
+//     const extname=fileTypes.test(path.extname(file.originalname))
+
+//     if(mimeType && extname){
+//       return cb(null,true)
+//     }
+//     cb('Must be jpeg, jpg, png or gif file format to upload')
+//   }
+// }).single('image')
+
 module.exports = {
   GetAllUsers,
   GetUserById,
   CreateUser,
   UpdateUserById,
   DeleteUserById
+  // Upload,
+  
 }
